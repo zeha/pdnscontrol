@@ -54,3 +54,30 @@ App.ModalView = Em.View.extend({
   }
 
 });
+
+App.LoadSparklineView = Em.View.extend({
+  tagName: 'span',
+
+  attributeBindings: ['server'],
+
+  //init: function() {
+  //  this._super();
+    //this.on("change", this, this._updateElementValue);
+  //},
+
+  //_updateElementValue: function() {
+    //set(this, 'checked', this.$().prop('checked'));
+  //}
+
+  didInsertElement: function() {
+    var that = this;
+    this.get('server').get_stats('-300s', function(stats) {
+      var points = data[0].datapoints;
+      var flat = [];
+      $.each(points, function(key, value) {
+        flat.push(1.0*value[0]);
+      });
+      that.$().sparkline(flat);
+    });
+  }
+});

@@ -117,6 +117,11 @@ App.ServersController = Ember.ArrayController.extend({
       }
 
     }).append();
+  },
+
+
+  didLoad: function(e) {
+    console.log('controller didLoad', e);
   }
 
 });

@@ -25,7 +25,7 @@
             <td>{{listen_address}}</td>
             <td>{{version}}</td>
             <td>{{uptime}}</td>
-            <td>{{load}}</td>
+            <td>{{view App.LoadSparklineView serverBinding="this" }}</td>
           </tr>
           {{/each}}
         </tbody>
